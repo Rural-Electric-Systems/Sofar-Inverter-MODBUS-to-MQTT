@@ -1,0 +1,1355 @@
+[
+    {
+        "id": "c2fe5fd5.3f8b1",
+        "type": "tab",
+        "label": "SolarMAN",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d2562d2b.ab13",
+        "type": "ha-entity",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "ESS Battery",
+        "server": "83728f1a.43d75",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "ESS Battery"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "%"
+            }
+        ],
+        "state": "payload.payload",
+        "stateType": "msg",
+        "attributes": [
+            {
+                "property": "voltage",
+                "value": "voltage",
+                "valueType": "msg"
+            },
+            {
+                "property": "current",
+                "value": "current",
+                "valueType": "msg"
+            },
+            {
+                "property": "dc_power",
+                "value": "dc_power",
+                "valueType": "msg"
+            }
+        ],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "outputOnStateChange": false,
+        "outputPayload": "$entity().state ? \"on\": \"off\"",
+        "outputPayloadType": "jsonata",
+        "x": 1130,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "501611ea.a5337",
+        "type": "ha-entity",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "PV Generation",
+        "server": "83728f1a.43d75",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "Solar Generation"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "W"
+            }
+        ],
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "outputOnStateChange": false,
+        "outputPayload": "$entity().state ? \"on\": \"off\"",
+        "outputPayloadType": "jsonata",
+        "x": 840,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2c9316ba.f09dca",
+        "type": "ha-entity",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Grid Power",
+        "server": "83728f1a.43d75",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "Grid Power"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "W"
+            }
+        ],
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [
+            {
+                "property": "Home Consumption",
+                "value": "home",
+                "valueType": "msg"
+            }
+        ],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "outputOnStateChange": false,
+        "outputPayload": "$entity().state ? \"on\": \"off\"",
+        "outputPayloadType": "jsonata",
+        "x": 830,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d1192b8.ab21dd",
+        "type": "ha-entity",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "PV Daily Statistics",
+        "server": "83728f1a.43d75",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "PV Daily Statistics"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "kWh"
+            }
+        ],
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "outputOnStateChange": false,
+        "outputPayload": "$entity().state ? \"on\": \"off\"",
+        "outputPayloadType": "jsonata",
+        "x": 870,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3be53bdb.3cc874",
+        "type": "mqtt in",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "topic": "sensors/sofar/pv_generation_power",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "2fc552e6.9dbd7e",
+        "x": 180,
+        "y": 260,
+        "wires": [
+            [
+                "501611ea.a5337"
+            ]
+        ]
+    },
+    {
+        "id": "daaf01d1.3a3dd",
+        "type": "mqtt in",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "topic": "sensors/sofar/batt_soc",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "2fc552e6.9dbd7e",
+        "x": 220,
+        "y": 80,
+        "wires": [
+            [
+                "864cfd7f.4304"
+            ]
+        ]
+    },
+    {
+        "id": "c29e316c.a9b67",
+        "type": "mqtt in",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "topic": "sensors/sofar/grid_power",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "2fc552e6.9dbd7e",
+        "x": 210,
+        "y": 320,
+        "wires": [
+            [
+                "ccda2d6b.7ee16"
+            ]
+        ]
+    },
+    {
+        "id": "b1f2d73f.3eb788",
+        "type": "mqtt in",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "topic": "sensors/sofar/day_pv_generated",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "2fc552e6.9dbd7e",
+        "x": 150,
+        "y": 1000,
+        "wires": [
+            [
+                "1d1192b8.ab21dd"
+            ]
+        ]
+    },
+    {
+        "id": "6f06503d.6042a",
+        "type": "mqtt in",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "topic": "sensors/sofar/home_load_power",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "2fc552e6.9dbd7e",
+        "x": 190,
+        "y": 380,
+        "wires": [
+            [
+                "26809848.6cdca8"
+            ]
+        ]
+    },
+    {
+        "id": "ccda2d6b.7ee16",
+        "type": "change",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "-$number(payload)",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 320,
+        "wires": [
+            [
+                "2c9316ba.f09dca"
+            ]
+        ]
+    },
+    {
+        "id": "26809848.6cdca8",
+        "type": "ha-entity",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Home Consumption",
+        "server": "83728f1a.43d75",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "Home Consumption"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "W"
+            }
+        ],
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "outputOnStateChange": false,
+        "outputPayload": "$entity().state ? \"on\": \"off\"",
+        "outputPayloadType": "jsonata",
+        "x": 860,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1b59ec58.b74254",
+        "type": "ha-entity",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "ESS Battery Power",
+        "server": "83728f1a.43d75",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "ESS Battery Power"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "W"
+            }
+        ],
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "outputOnStateChange": false,
+        "outputPayload": "$entity().state ? \"on\": \"off\"",
+        "outputPayloadType": "jsonata",
+        "x": 850,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "abd444c3.026c78",
+        "type": "mqtt in",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "topic": "sensors/sofar/batt_power",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "2fc552e6.9dbd7e",
+        "x": 210,
+        "y": 440,
+        "wires": [
+            [
+                "1b59ec58.b74254",
+                "f597913.83f207"
+            ]
+        ]
+    },
+    {
+        "id": "864cfd7f.4304",
+        "type": "join",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "",
+        "propertyType": "full",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 690,
+        "y": 80,
+        "wires": [
+            [
+                "64ae6295.994d8c",
+                "70289cd9.d57934"
+            ]
+        ]
+    },
+    {
+        "id": "24cdee2e.e81532",
+        "type": "mqtt in",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "topic": "sensors/sofar/batt_voltage",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "2fc552e6.9dbd7e",
+        "x": 210,
+        "y": 140,
+        "wires": [
+            [
+                "9d3b3185.98f51"
+            ]
+        ]
+    },
+    {
+        "id": "5451d93e.c999d8",
+        "type": "mqtt in",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "topic": "sensors/sofar/batt_current",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "2fc552e6.9dbd7e",
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "c43da39f.120d6"
+            ]
+        ]
+    },
+    {
+        "id": "9d3b3185.98f51",
+        "type": "change",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "voltage",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 140,
+        "wires": [
+            [
+                "864cfd7f.4304"
+            ]
+        ]
+    },
+    {
+        "id": "c43da39f.120d6",
+        "type": "change",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "current",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 200,
+        "wires": [
+            [
+                "864cfd7f.4304"
+            ]
+        ]
+    },
+    {
+        "id": "64ae6295.994d8c",
+        "type": "debug",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "70289cd9.d57934",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "func": "msg.dc_power = Number(msg.voltage) * Number(msg.current)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 880,
+        "y": 140,
+        "wires": [
+            [
+                "d2562d2b.ab13",
+                "47d185fc.d2245c"
+            ]
+        ]
+    },
+    {
+        "id": "1e359d58.842393",
+        "type": "mqtt out",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Send Command To Inverter",
+        "topic": "sensors/sofar/command",
+        "qos": "",
+        "retain": "",
+        "broker": "2fc552e6.9dbd7e",
+        "x": 1220,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "786de7d.66e0e18",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Charge 3 kW",
+        "func": "msg.payload = \"CHARGE, 3000\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 890,
+        "y": 520,
+        "wires": [
+            [
+                "1e359d58.842393"
+            ]
+        ]
+    },
+    {
+        "id": "4d705eb4.dbd",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Discharge 3 kW",
+        "func": "msg.payload = \"DISCHARGE, 3000\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 880,
+        "y": 880,
+        "wires": [
+            [
+                "1e359d58.842393"
+            ]
+        ]
+    },
+    {
+        "id": "45d0686.3427f98",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Auto Mode",
+        "func": "msg.payload = \"AUTO, 0\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 890,
+        "y": 920,
+        "wires": [
+            [
+                "1e359d58.842393"
+            ]
+        ]
+    },
+    {
+        "id": "34ecde46.c42072",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Standby Mode",
+        "func": "msg.payload = \"STANDBY, 0\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 880,
+        "y": 680,
+        "wires": [
+            [
+                "1e359d58.842393"
+            ]
+        ]
+    },
+    {
+        "id": "601187ea.1d55c8",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 520,
+        "wires": [
+            [
+                "786de7d.66e0e18"
+            ]
+        ]
+    },
+    {
+        "id": "a60ba4d1.1b2b98",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 920,
+        "wires": [
+            [
+                "45d0686.3427f98"
+            ]
+        ]
+    },
+    {
+        "id": "3ba55e3d.0923a2",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 680,
+        "wires": [
+            [
+                "34ecde46.c42072"
+            ]
+        ]
+    },
+    {
+        "id": "e9e96d21.6502b",
+        "type": "ha-entity",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "ESS Efficiency",
+        "server": "83728f1a.43d75",
+        "version": 1,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityType": "sensor",
+        "config": [
+            {
+                "property": "name",
+                "value": "ESS Efficiency"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "%"
+            }
+        ],
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [
+            {
+                "property": "ess_charge",
+                "value": "charge_eff",
+                "valueType": "msg"
+            },
+            {
+                "property": "ess_discharge",
+                "value": "discharge_eff",
+                "valueType": "msg"
+            }
+        ],
+        "resend": true,
+        "outputLocation": "",
+        "outputLocationType": "none",
+        "inputOverride": "allow",
+        "outputOnStateChange": false,
+        "outputPayload": "$entity().state ? \"on\": \"off\"",
+        "outputPayloadType": "jsonata",
+        "x": 1120,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "47d185fc.d2245c",
+        "type": "join",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "",
+        "propertyType": "full",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 710,
+        "y": 200,
+        "wires": [
+            [
+                "eed36804.5b8568"
+            ]
+        ]
+    },
+    {
+        "id": "f597913.83f207",
+        "type": "change",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ac_power",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 420,
+        "wires": [
+            [
+                "47d185fc.d2245c"
+            ]
+        ]
+    },
+    {
+        "id": "eed36804.5b8568",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "func": "msg.charge_eff = Number(msg.dc_power) / Number(msg.ac_power)\nmsg.discharge_eff = Number(msg.ac_power) / Number(msg.dc_power)\n\nif(msg.discharge_eff >= msg.charge_eff)\n{\n    msg.payload = msg.charge_eff\n} else\n{\n    msg.payload = msg.discharge_eff\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 880,
+        "y": 200,
+        "wires": [
+            [
+                "e9e96d21.6502b"
+            ]
+        ]
+    },
+    {
+        "id": "81136f7d.277c6",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 600,
+        "wires": [
+            [
+                "cb5e06b8.01aa88"
+            ]
+        ]
+    },
+    {
+        "id": "cb5e06b8.01aa88",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Charge 2 kW",
+        "func": "msg.payload = \"CHARGE, 2000\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 890,
+        "y": 600,
+        "wires": [
+            [
+                "1e359d58.842393"
+            ]
+        ]
+    },
+    {
+        "id": "58d93ed9.58315",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Charge 1 kW",
+        "func": "msg.payload = \"CHARGE, 1000\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 890,
+        "y": 640,
+        "wires": [
+            [
+                "1e359d58.842393"
+            ]
+        ]
+    },
+    {
+        "id": "faf7a602.3590a8",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 640,
+        "wires": [
+            [
+                "58d93ed9.58315"
+            ]
+        ]
+    },
+    {
+        "id": "c4ba014f.b7fbf",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Discharge 500 W",
+        "func": "msg.payload = \"DISCHARGE, 500\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 870,
+        "y": 760,
+        "wires": [
+            [
+                "1e359d58.842393"
+            ]
+        ]
+    },
+    {
+        "id": "5074d8ac.fadf48",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Discharge 1 kW",
+        "func": "msg.payload = \"DISCHARGE, 1000\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 880,
+        "y": 800,
+        "wires": [
+            [
+                "1e359d58.842393"
+            ]
+        ]
+    },
+    {
+        "id": "7de5a28d.4ba50c",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Discharge 2 kW",
+        "func": "msg.payload = \"DISCHARGE, 2000\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 880,
+        "y": 840,
+        "wires": [
+            [
+                "1e359d58.842393"
+            ]
+        ]
+    },
+    {
+        "id": "4963b512.e1a4cc",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 760,
+        "wires": [
+            [
+                "c4ba014f.b7fbf"
+            ]
+        ]
+    },
+    {
+        "id": "dfa4ffb4.005fa",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 880,
+        "wires": [
+            [
+                "4d705eb4.dbd"
+            ]
+        ]
+    },
+    {
+        "id": "2945e57f.dc832a",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 800,
+        "wires": [
+            [
+                "5074d8ac.fadf48"
+            ]
+        ]
+    },
+    {
+        "id": "d71f9644.26d048",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 840,
+        "wires": [
+            [
+                "7de5a28d.4ba50c"
+            ]
+        ]
+    },
+    {
+        "id": "214402aa.c175ee",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "OctopusGo - 01:00",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 01 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 540,
+        "wires": [
+            [
+                "676c7ae4.a883f4"
+            ]
+        ]
+    },
+    {
+        "id": "b186c34d.dd211",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "OctopusGo - 07:10",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "10 07 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 620,
+        "wires": [
+            [
+                "45d0686.3427f98"
+            ]
+        ]
+    },
+    {
+        "id": "52c9a58c.10e9cc",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "OctopusGo - 04:30",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "30 04 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 580,
+        "wires": [
+            [
+                "45d0686.3427f98"
+            ]
+        ]
+    },
+    {
+        "id": "676c7ae4.a883f4",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Charge 2.5 kW",
+        "func": "msg.payload = \"CHARGE, 2500\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 880,
+        "y": 560,
+        "wires": [
+            [
+                "1e359d58.842393"
+            ]
+        ]
+    },
+    {
+        "id": "bc713172.30d2b",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 560,
+        "wires": [
+            [
+                "676c7ae4.a883f4"
+            ]
+        ]
+    },
+    {
+        "id": "e3458b5.0ae6e78",
+        "type": "function",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "Discharge, 150 W",
+        "func": "msg.payload = \"DISCHARGE, 150\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 870,
+        "y": 720,
+        "wires": [
+            [
+                "1e359d58.842393"
+            ]
+        ]
+    },
+    {
+        "id": "bb04c430.fe1398",
+        "type": "inject",
+        "z": "c2fe5fd5.3f8b1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 720,
+        "wires": [
+            [
+                "e3458b5.0ae6e78"
+            ]
+        ]
+    },
+    {
+        "id": "83728f1a.43d75",
+        "type": "server",
+        "name": "Home Assistant",
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true
+    },
+    {
+        "id": "2fc552e6.9dbd7e",
+        "type": "mqtt-broker",
+        "name": "Moss",
+        "broker": "192.168.86.46",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]
